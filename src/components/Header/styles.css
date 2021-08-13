@@ -1,0 +1,51 @@
+.header {
+    background-image: url('../../assets/images/mobile/bg-pattern-header.svg');
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+}
+
+.header__logo-container {
+    height: 30px;
+}
+
+.header__toggle-icon {
+    height: 20px;
+    width: 16px;
+}
+
+.header__toggle-icon--sun {
+    background-image: url('../../assets/icons/icon-sun.svg');
+}
+
+.header__toggle-icon--moon {
+    background-image: url('../../assets/icons/icon-moon.svg');
+}
+
+.header__toggle-button {
+    height: 23px;
+    width: 50px;
+}
+
+.header__toggle-bullet {
+    background-color: var(--violet);
+    height: 18px;
+    width: 18px;
+}
+
+@media screen and (min-width: 576px) {
+    .header {
+        background-image: url('../../assets/images/tablet/bg-pattern-header.svg');
+        border-bottom-left-radius: 80px;
+        padding-bottom: 3rem;
+        padding-top: 2rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .header {
+        background-image: url('../../assets/images/desktop/bg-pattern-header.svg');
+        border-bottom-left-radius: 80px;
+        padding-bottom: 3rem;
+        padding-top: 2rem;
+    }
+}

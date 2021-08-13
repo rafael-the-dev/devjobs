@@ -1,0 +1,14 @@
+:root {
+    --dark-grey: #6E8098;
+    --grey: #9DAEC2;
+    --light-violet: #939BF4;
+    --light-grey: #F4F6F8;
+    --midnight: #121721;
+    --violet: #5964E0;
+    --very-dark-blue: #19202D;
+    --white: #FFF;
+}
+
+* {
+    font-family: 'Kumbh Sans', sans-serif;
+}
