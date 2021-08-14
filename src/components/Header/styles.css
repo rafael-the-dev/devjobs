@@ -1,7 +1,7 @@
 .header {
     background-image: url('../../assets/images/mobile/bg-pattern-header.svg');
-    padding-bottom: 2rem;
-    padding-top: 1rem;
+    padding-bottom: 4rem;
+    padding-top: 2rem;
 }
 
 .header__logo-container {
@@ -36,8 +36,7 @@
     .header {
         background-image: url('../../assets/images/tablet/bg-pattern-header.svg');
         border-bottom-left-radius: 80px;
-        padding-bottom: 3rem;
-        padding-top: 2rem;
+        padding-bottom: 5rem;
     }
 }
 
@@ -45,7 +44,6 @@
     .header {
         background-image: url('../../assets/images/desktop/bg-pattern-header.svg');
         border-bottom-left-radius: 80px;
-        padding-bottom: 3rem;
-        padding-top: 2rem;
+        padding-bottom: 5rem;
     }
 }

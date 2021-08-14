@@ -1,0 +1,118 @@
+.search-section {
+    transform: translate(0, -50%);
+}
+
+.form {
+    background-color: var(--white);
+    padding: 0 5%;
+}
+
+.dark-mode .form {
+    background-color: var(--very-dark-blue);
+}
+
+.form__group {
+    padding: .8rem 0;
+}
+
+.form-control {
+    padding: .4rem .75rem;
+}
+
+.form-control:focus, .form-control:focus-visible,.form-control:focus-within {
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.form__filter-button, .form__search {
+    background-size: 19px;
+    height: 40px;
+    width: 40px;
+}
+
+.dark-mode ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(240, 240, 240);
+    opacity: .7; /* Firefox */
+}
+  
+.dark-mode :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(240, 240, 240);
+    opacity: .8;
+}
+  
+.dark-mode ::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgb(240, 240, 240);
+    opacity: .8; 
+}
+
+.form__filter-button {
+    background-image: url('../../assets/icons/icon-filter.svg');
+}
+
+.form__search {
+    background-image: url('../../assets/icons/icon-search.svg');
+    background-color: var(--violet);
+}
+
+@media screen and (min-width: 576px) {
+    .form {
+        padding: 0 3%;
+    }
+
+    .form__group {
+        border-right: 1px solid #979797a3;
+        width: 32%;
+    }
+
+    .form__group:last-child {
+        border-right: none;
+        width: 36;
+    }
+
+    .form__group {
+        background-position: left center;
+    }
+
+    .form__group--title {
+        background-image: url('../../assets/icons/icon-search-violet.svg');
+        background-size: 20px;
+    }
+
+    .form__group--location {
+        background-image: url('../../assets/icons/icon-location.svg');
+        background-size: 16px;
+    }
+
+    .form-control {
+        font-size: .95rem;
+        margin-left: 16px;
+        width: 85%;
+    }
+
+    .form-check-label {
+        font-weight: 700;
+        transition: background 1s ease-in;
+    }
+
+    .dark-mode .form-check-label {
+        color: var(--white);
+    }
+
+    .form__search {
+        background-image: none;
+        width: auto;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .form__group {
+        padding: 1rem 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .form__group {
+        padding: 1.4rem 0;
+    }
+}

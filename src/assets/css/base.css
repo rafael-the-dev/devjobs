@@ -12,3 +12,12 @@
 * {
     font-family: 'Kumbh Sans', sans-serif;
 }
+
+body { 
+    background-color: var(--light-grey);
+    transition: background 1s ease-in;
+}
+
+.dark-mode { 
+    background-color: var(--midnight);
+}

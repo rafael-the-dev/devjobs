@@ -12,16 +12,19 @@ const Header = () => {
     };
 
     const sunIconClickHandler = () => {
-        helper('justify-content-end', 'justify-content-start')
+        helper('justify-content-end', 'justify-content-start');
+        document.querySelector('body').classList.remove('dark-mode');
     }
 
     const moonIconClickHandler = () => {
-        helper('justify-content-start', 'justify-content-end')
+        helper('justify-content-start', 'justify-content-end');
+        document.querySelector('body').classList.add('dark-mode');
     }
 
     const clickHandler = () => {
         buttonRef.current.classList.toggle('justify-content-start');
         buttonRef.current.classList.toggle('justify-content-end');
+        document.querySelector('body').classList.toggle('dark-mode')
     };
 
     return (

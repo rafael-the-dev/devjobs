@@ -13,3 +13,11 @@
 .bg-no-repeat {
     background-repeat: no-repeat;
 }
+
+.font-weight-7  {
+    font-weight: 700;
+}
+
+.transition {
+    transition: background 1s ease-in;
+}
