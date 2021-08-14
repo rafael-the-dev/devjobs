@@ -4,7 +4,7 @@ import './styles.css';
 import data from '../../data.json';
 import JobCard from '../../components/JobCard';
 import { Link } from 'react-router-dom';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useMemo } from 'react';
 
 const Home = () => {
     const [ title, setTitle ] = useState('');
@@ -14,6 +14,8 @@ const Home = () => {
     const locationRef = useRef(null);
     const isFullTimeRef = useRef(null);
 
+
+    const headerMemo = useMemo(() => <Header />, [ ]);
 
     const filteredJobs = () => {
         let jobs = data;
@@ -50,63 +52,59 @@ const Home = () => {
     const searchClickHandler = () => {
         setTitle(t => titleRef.current.value);
         setLocation(l => locationRef.current.value);
-        setIsFullTime(f => isFullTimeRef.current.checked); 
+        setIsFullTime(f => isFullTimeRef.current.checked);   
     }
 
-    useEffect(() => {
-        const currentTitleRef = titleRef;
-        const currentLocation = locationRef;
-        const currentIsFullTimeRef = isFullTimeRef;
-        return () => {
-            currentTitleRef.current = null;
-            currentLocation.current = null;
-            currentIsFullTimeRef.current = null;
-        }
-    }, [ ]);
+    const formMemo = useMemo(() => (
+        <Container as="section" fluid className="px w-100 search-section">
+            <Form className="d-flex rounded-3 align-items-center transition justify-content-between form">
+                <Form.Group className="form__group bg-no-repeat form__group--title">
+                    <Form.Control
+                        type="text" 
+                        placeholder="Filter by title, companies, expertises..." 
+                        className="me-2 me-sm-0 form__title bg-transparent border-0" 
+                        ref={titleRef}
+                        key={Math.random() * 30}
+                    />
+                </Form.Group>
+                <Form.Group className="d-none d-sm-block form__group  bg-no-repeat form__group--location">
+                    <Form.Control 
+                        type="text" 
+                        placeholder="Filter by location" 
+                        className="form__location bg-transparent border-0" 
+                        ref={locationRef}
+                        key={Math.random()}
+                    />
+                </Form.Group>
+                <Form.Group className="d-flex align-items-center justify-content-between form__group form__group--controllers">
+                    <Form.Check
+                        type="checkbox" 
+                        id="isFullTimeCheck"
+                        label="Full time only" 
+                        className="d-none d-sm-block form__checkbox" 
+                        ref={isFullTimeRef}
+                        key={Math.random() * 101}
+                    />
+                    <Button 
+                        className="bg-center bg-no-repeat me-3 border-0 form__filter-button bg-transparent d-sm-none">
+                    </Button>
+                    <Button
+                        type="button" 
+                        variant="primary" 
+                        className="bg-center bg-no-repeat form__search"
+                        onClick={searchClickHandler}>
+                        <span className="d-none d-sm-block">Search</span>
+                    </Button>
+                </Form.Group>  
+            </Form>
+        </Container>
+    ), [ ]);
 
     return (
         <>
-            <Header />
+            { headerMemo }
             <Container as="main" fluid className="position-relative">
-                <Container as="section" fluid className="px w-100 search-section">
-                    <Form className="d-flex rounded-3 align-items-center transition justify-content-between form">
-                        <Form.Group className="form__group  bg-no-repeat form__group--title">
-                            <Form.Control
-                                type="text" 
-                                placeholder="Filter by title, companies, expertises..." 
-                                className="me-2 me-sm-0 form__title bg-transparent border-0" 
-                                ref={titleRef}
-                            />
-                        </Form.Group>
-                        <Form.Group className="d-none d-sm-block form__group  bg-no-repeat form__group--location">
-                            <Form.Control 
-                                type="text" 
-                                placeholder="Filter by location" 
-                                className="form__location bg-transparent border-0" 
-                                ref={locationRef}
-                            />
-                        </Form.Group>
-                        <Form.Group className="d-flex align-items-center justify-content-between form__group form__group--controllers">
-                            <Form.Check
-                                type="checkbox" 
-                                id="isFullTimeCheck"
-                                label="Full time only" 
-                                className="d-none d-sm-block form__checkbox" 
-                                ref={isFullTimeRef}
-                            />
-                            <Button 
-                                className="bg-center bg-no-repeat me-3 border-0 form__filter-button bg-transparent d-sm-none">
-                            </Button>
-                            <Button
-                                type="button" 
-                                variant="primary" 
-                                className="bg-center bg-no-repeat form__search"
-                                onClick={searchClickHandler}>
-                                <span className="d-none d-sm-block">Search</span>
-                            </Button>
-                        </Form.Group>
-                    </Form>
-                </Container>
+                { formMemo }
                 <Container as="section" fluid className="px mt-4">
                     <Row className="align-items-stretch">
                         {
