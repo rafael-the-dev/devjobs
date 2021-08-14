@@ -55,6 +55,11 @@
     background-color: var(--violet);
 }
 
+.form__search:focus, .form__search:focus-visible, .form__search:focus-within {
+    background-color: var(--violet);
+    box-shadow: none;
+}
+
 @media screen and (min-width: 576px) {
     .form {
         padding: 0 3%;
