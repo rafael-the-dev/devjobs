@@ -1,0 +1,11 @@
+.dark-mode .dark-blue {
+    background-color: var(--very-dark-blue);
+}
+
+.dark-mode .d-white {
+    color: var(--white);
+}
+
+.dark-mode .d-grey {
+    color: var(--dark-grey);
+}

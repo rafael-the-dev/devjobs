@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/base.css';
 import './assets/css/general.css';
 import './assets/css/responsive.css';
+import './assets/css/darkmode.css';
 import App from './pages/App';
 
 ReactDOM.render(

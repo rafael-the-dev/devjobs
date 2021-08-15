@@ -1,0 +1,135 @@
+.job-header {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 2rem 5%;
+    transform: translateY(-16px);
+    background: var(--white);
+}
+
+.job-header__icon {
+    background-size: 35px;
+    border-radius: 13px;
+    height: 45px;
+    width: 45px;
+}
+
+.job-header__title {
+    color: var(--very-dark-blue);
+    font-size: 1.3rem;
+}
+
+
+.job-header__site {
+    font-size: .9rem;
+    margin-bottom: 0;
+}
+
+
+.job-header__button {
+    background-color: var(--light-violet);
+    box-shadow: none !important;
+    padding: .55rem .75rem;
+    width: 70%;
+}
+
+.dark-mode .job-header__button {
+    background-color: #C9C9C9;
+    color: var(--white);
+}
+
+.dark-mode .job-header__button:hover {
+    background-color: #C9C9C9;
+}
+
+.apply-button {
+    background-color: var(--violet);
+    padding: .55rem .75rem;
+}
+
+.footer {
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 4px 0px inset;
+}
+
+.footer__title {
+    font-size: 1.2rem;
+}
+
+.footer__description {
+    font-size: .9rem;
+}
+
+.footer__button {
+    width: 80%
+}
+
+@media screen and (min-width: 576px) {
+    .job-header {
+        padding: 0;
+        transform: translateY(-29px);
+    }
+
+    .job-header__icon {
+        background-size: 50px;
+        border-radius: .3rem 0 0 .3rem; 
+        height: 100px;
+        left: 0 !important;
+        position: relative !important;
+        transform: translate(0) !important;
+        top: 0 !important;
+        width: 20%;
+    }
+
+    .job-header__content {
+        padding: 0 5%;
+    }
+
+    .job-header__button {
+        width: 40%;
+    }
+
+    .footer__button {
+        width: 25%
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .footer__button {
+        width: 22%
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .details-container {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    .job-header {
+        transform: translateY(-33px);
+    }
+
+    .job-header__icon {
+        width: 15%;
+    }
+
+    .job-header__button {
+        width: 29%;
+    }
+
+    .footer__button {
+        width: 22%
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .details-container {
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .details-container {
+        padding-left: 29%;
+        padding-right: 29%;
+    }
+}
