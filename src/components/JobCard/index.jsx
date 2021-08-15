@@ -7,7 +7,7 @@ const JobCard = ({ job }) => {
     const getImage = name => require(`../../assets/images/logos/${name}`).default;
 
     return (
-        <Card className="w-100 position-relative border-0 rounded-3 py-4 px-2 job-card">
+        <Card className="w-100 position-relative border-0 rounded-3 py-4 px-2 transition job-card">
             <span className="position-absolute top-0 start-0 d-flex align-items-center 
                 justify-content-center job-card__logo rounded-3 bg-center bg-no-repeat" 
                 style={{ backgroundImage: `url(${getImage(job.logo)})`, backgroundColor: job.logoBackground}}>
@@ -17,7 +17,7 @@ const JobCard = ({ job }) => {
                     <time className="me-3 job-card__info">{ job.postedAt }</time>
                     <span className="job-card__info">{ job.contract }</span>
                 </div>
-                <Card.Title className="mt-2 job-card__position">{ job.position }</Card.Title>
+                <Card.Title className="mt-2 transition job-card__position">{ job.position }</Card.Title>
                 <Card.Text className="job-card__info">{ job.company }</Card.Text>
             </Card.Body>
             <Card.Footer as="footer" className="border-0 bg-transparent">

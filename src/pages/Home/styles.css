@@ -15,8 +15,17 @@
     padding: .8rem 0;
 }
 
+.form__group--location, .modal__group--location {
+    background-image: url('../../assets/icons/icon-location.svg');
+    background-size: 16px;
+}
+
 .form-control {
     padding: .4rem .75rem;
+}
+
+.dark-mode .form-control {
+    color: var(--white);
 }
 
 .form-control:focus, .form-control:focus-visible,.form-control:focus-within {
@@ -46,18 +55,89 @@
     opacity: .8; 
 }
 
+.modal__controllers-container {
+    padding: 1rem 5%;
+}
+
 .form__filter-button {
     background-image: url('../../assets/icons/icon-filter.svg');
 }
 
+.home-button:focus, .home-button:focus-visible, .home-button:focus-within {
+    box-shadow: none;
+}
+
+.modal__search, .form__search {
+    background-color: var(--violet);
+}
+
 .form__search {
     background-image: url('../../assets/icons/icon-search.svg');
-    background-color: var(--violet);
 }
 
 .form__search:focus, .form__search:focus-visible, .form__search:focus-within {
     background-color: var(--violet);
-    box-shadow: none;
+}
+
+.modal-content {
+    left: 3%;
+    right: 3%;
+    top: 18vh;
+    width: 94%;
+}
+
+.dark-mode .modal-content {
+    background-color: var(--very-dark-blue);
+}
+
+.modal-header {
+    padding: 1rem 5% 0 5%;
+    border-bottom: none;
+}
+
+.dark-mode .btn-close {
+    filter: invert(1);
+}
+
+.modal__form {
+    padding: 1rem 0;
+}
+
+.modal__group--location {    
+    background-position: left 5% center;
+    border-bottom: 1px solid #979797ab;
+    padding: .5rem 5%;
+}
+
+.modal__location {
+    margin-left: 5%;
+}
+
+.dark-mode .modal__location {
+    color: var(--white);
+}
+
+.modal__controllers-container {
+    padding: 1rem 5%;
+}
+
+.modal__search {
+    padding: .55rem .75rem;
+}
+
+.modal__checkbox, .form-check-label {
+    font-weight: 700;
+    transition: background 1s ease-in;
+}
+
+.dark-mode .form-check-label  {
+    color: var(--white);
+}
+
+.load-more {
+    background-color: var(--violet);
+    margin: 1.2rem auto 0 auto;
+    width: 80%;
 }
 
 @media screen and (min-width: 576px) {
@@ -84,29 +164,19 @@
         background-size: 20px;
     }
 
-    .form__group--location {
-        background-image: url('../../assets/icons/icon-location.svg');
-        background-size: 16px;
-    }
-
     .form-control {
         font-size: .95rem;
         margin-left: 16px;
         width: 85%;
     }
 
-    .form-check-label {
-        font-weight: 700;
-        transition: background 1s ease-in;
-    }
-
-    .dark-mode .form-check-label {
-        color: var(--white);
-    }
-
     .form__search {
         background-image: none;
         width: auto;
+    }
+
+    .load-more {
+        width: 40%;
     }
 }
 
@@ -114,10 +184,18 @@
     .form__group {
         padding: 1rem 0;
     }
+
+    .load-more {
+        width: 30%;
+    }
 }
 
 @media screen and (min-width: 1200px) {
     .form__group {
         padding: 1.4rem 0;
+    }
+
+    .load-more {
+        width: 20%;
     }
 }

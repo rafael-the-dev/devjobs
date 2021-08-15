@@ -1,4 +1,4 @@
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Modal } from 'react-bootstrap';
 import Header from '../../components/Header';
 import './styles.css';
 import data from '../../data.json';
@@ -10,16 +10,64 @@ const Home = () => {
     const [ title, setTitle ] = useState('');
     const [ location, setLocation ] = useState('');
     const [ isFullTime, setIsFullTime ] = useState(false);
+    const [show, setShow] = useState(false);
+    const [ jobsQuantity, setJobsQuantity ] = useState(8);
+
     const titleRef = useRef(null);
     const locationRef = useRef(null);
     const isFullTimeRef = useRef(null);
-
+    const isFullTimeMobileRef = useRef(null);
+    const locationMobileRef = useRef(null);
 
     const headerMemo = useMemo(() => <Header />, [ ]);
 
+    const handleClose = () => setShow(false);
+    const filterClickHandler = () => setShow(true);
+
+    const searchMobileClickHandler = () => {
+        setTitle(t => titleRef.current.value);
+        setLocation(l => locationMobileRef.current.value);
+        setIsFullTime(f => isFullTimeMobileRef.current.checked);   
+        setShow(false);
+    };
+
+    const modalMemo = useMemo(() => (
+        <Modal show={show} onHide={handleClose} className="rounded-3 modal">
+            <Modal.Header closeButton>
+            </Modal.Header>
+            <Modal.Body as="form" className="modal__form">
+                <Form.Group className="bg-no-repeat modal__group--location">
+                    <Form.Control 
+                        type="text" 
+                        placeholder="Filter by location" 
+                        className="modal__location transition bg-transparent border-0" 
+                        ref={locationMobileRef}
+                        key={Math.random() * 0.5}
+                    />
+                </Form.Group>
+                <div className="d-flex flex-column align-items-start modal__controllers-container">
+                    <Form.Check
+                        type="checkbox" 
+                        id="isFullTimeCheckMobile"
+                        label="Full time only" 
+                        className="modal__checkbox" 
+                        ref={isFullTimeMobileRef}
+                        key={Math.random() * 0.13}
+                    />
+                    <Button
+                        type="button" 
+                        className="mt-3 w-100 rounded-3 modal__search home-button"
+                        onClick={searchMobileClickHandler}>
+                        Search
+                    </Button>
+                </div>
+            </Modal.Body>
+      </Modal>
+    ), [ show ])
+
     const filteredJobs = () => {
         let jobs = data;
-        const titleLowerCases = title.toLowerCase();
+        const titleLowerCased = title.toLowerCase();
         const locationLowerCased = location.toLowerCase();
 
         jobs = data.filter(item => {
@@ -28,14 +76,14 @@ const Home = () => {
             let itemLocation = item.location.toLowerCase();
             let contract = item.contract.toLowerCase();
 
-            if(titleLowerCases && locationLowerCased && isFullTime) {
-                if(((companyName === title) || (position === titleLowerCases)) && (itemLocation === locationLowerCased) && (contract === 'full time')) {
+            if(titleLowerCased && locationLowerCased && isFullTime) {
+                if(((companyName === title) || (position === titleLowerCased)) && (itemLocation === locationLowerCased) && (contract === 'full time')) {
                     return true;
                 }
 
                 return false;
-            } else if(titleLowerCases || locationLowerCased || isFullTime) {
-                if(((companyName === titleLowerCases) || (position === titleLowerCases)) || (itemLocation === locationLowerCased) || (contract === 'full time')) {
+            } else if(titleLowerCased || locationLowerCased || isFullTime) {
+                if(((companyName === titleLowerCased) || (position === titleLowerCased)) || (itemLocation === locationLowerCased) || (contract === 'full time')) {
                     return true;
                 }
 
@@ -46,6 +94,7 @@ const Home = () => {
             
         });
 
+        //setJobsQuantity(q => jobs.length);
         return jobs;
     };
 
@@ -53,7 +102,17 @@ const Home = () => {
         setTitle(t => titleRef.current.value);
         setLocation(l => locationRef.current.value);
         setIsFullTime(f => isFullTimeRef.current.checked);   
-    }
+    };
+
+    const loadClickHandler = () => {
+        let quantity = jobsQuantity + 4;
+
+        if(quantity > data.length) {
+            quantity = data.length;
+        }
+
+        setJobsQuantity(q => quantity);
+    };
 
     const formMemo = useMemo(() => (
         <Container as="section" fluid className="px w-100 search-section">
@@ -62,7 +121,7 @@ const Home = () => {
                     <Form.Control
                         type="text" 
                         placeholder="Filter by title, companies, expertises..." 
-                        className="me-2 me-sm-0 form__title bg-transparent border-0" 
+                        className="me-2 me-sm-0 transition form__title bg-transparent border-0" 
                         ref={titleRef}
                         key={Math.random() * 30}
                     />
@@ -71,7 +130,7 @@ const Home = () => {
                     <Form.Control 
                         type="text" 
                         placeholder="Filter by location" 
-                        className="form__location bg-transparent border-0" 
+                        className="form__location transition bg-transparent border-0" 
                         ref={locationRef}
                         key={Math.random()}
                     />
@@ -86,12 +145,12 @@ const Home = () => {
                         key={Math.random() * 101}
                     />
                     <Button 
-                        className="bg-center bg-no-repeat me-3 border-0 form__filter-button bg-transparent d-sm-none">
+                        onClick={filterClickHandler}
+                        className="bg-center bg-no-repeat me-3 border-0 form__filter-button home-button bg-transparent d-sm-none">
                     </Button>
                     <Button
                         type="button" 
-                        variant="primary" 
-                        className="bg-center bg-no-repeat form__search"
+                        className="bg-center home-button bg-no-repeat form__search"
                         onClick={searchClickHandler}>
                         <span className="d-none d-sm-block">Search</span>
                     </Button>
@@ -105,10 +164,10 @@ const Home = () => {
             { headerMemo }
             <Container as="main" fluid className="position-relative">
                 { formMemo }
-                <Container as="section" fluid className="px mt-4">
+                <Container as="section" fluid className="px pb-5 mt-4">
                     <Row className="align-items-stretch">
                         {
-                            filteredJobs().map(item => (
+                            filteredJobs().slice(0, jobsQuantity).map(item => (
                                 <Col xs={12} sm={6} lg={4} xxl={3} as={Link} to={`/jobs/${item.id}`} key={item.id}
                                     className="mb-5 text-decoration-none">
                                     <JobCard job={item} />
@@ -116,7 +175,9 @@ const Home = () => {
                             ))
                         }
                     </Row>
+                    <Button className="home-button d-block load-more" onClick={loadClickHandler} >Load more</Button>
                 </Container>
+                { modalMemo }
             </Container>
         </>
     );

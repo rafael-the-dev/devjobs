@@ -1,7 +1,6 @@
 .job-card {
     background-color: var(--white);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    transition: background 1s ease-in;
 }
 
 .dark-mode .job-card {
@@ -24,7 +23,6 @@
     color: var(--very-dark-blue);
     font-size: 1.1rem;
     font-weight: 600;
-    transition: color 1s ease-in;
 }
 
 .dark-mode .job-card__position {
