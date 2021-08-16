@@ -3,7 +3,8 @@
 }
 
 .h2 {
-    font-size: 1.75rem;
+    color: var(--very-dark-blue);
+    font-size: 1.3rem;
 }
 
 .h3 {

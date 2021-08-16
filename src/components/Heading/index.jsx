@@ -8,7 +8,7 @@ const H1 = ({ children, className }) => {
 
 const H2 = ({ children, className }) => {
     return (
-        <h2 className={`font-weight-6 text-center text-light h2 ${className}`}>{ children }</h2>
+        <h2 className={`font-weight-7 transition text-start d-white h2 ${className}`}>{ children }</h2>
     );
 };
 

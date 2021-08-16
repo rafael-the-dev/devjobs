@@ -1,5 +1,8 @@
+.white-bg {
+    background-color: var(--white);
+}
+
 .job-header {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 2rem 5%;
     transform: translateY(-16px);
     background: var(--white);
@@ -31,19 +34,89 @@
     width: 70%;
 }
 
-.dark-mode .job-header__button {
-    background-color: #C9C9C9;
-    color: var(--white);
+.job-info {
+    border-radius: .5rem .5rem 0 0;
 }
 
-.dark-mode .job-header__button:hover {
-    background-color: #C9C9C9;
+.job-info__time, .footer__description {
+    color: var(--dark-grey);
+    font-size: .95rem;
+}
+
+.job-info__title {
+    font-size: 1.4rem;
+}
+
+.job-info__location {
+    color: var(--violet);
+    font-size: .9rem;
 }
 
 .apply-button {
     background-color: var(--violet);
     padding: .55rem .75rem;
+    width: 80%
 }
+
+.job-info__button {
+    width: 100%;
+}
+
+.requirements {
+    padding-bottom: 1.2rem;
+    padding-top: 1.2rem;
+}
+
+.requirements__list, .role__list {
+    list-style: none;
+}
+
+.requirements__list {
+    margin-left: 14px;
+}
+
+.requirements__item, .role__item {
+    color: var(--dark-grey);
+    font-size: .965rem;
+    line-height: 1.5rem;
+}
+
+.requirements__item::before, .role__item::before {
+    color: var(--violet); /* Change the color */
+    line-height: 30px;
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+    margin-right: 2rem;
+}
+
+.requirements__item::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    font-size: 1.7rem;
+}
+
+.role {
+    border-radius: 0 0 .5rem .5rem;
+}
+
+.role__item::before {
+    font-size: 1.2rem;
+}
+
+.role__item:nth-child(1):before {
+    content: '1';
+}
+
+.role__item:nth-child(2):before {
+    content: '2';
+}
+
+.role__item:nth-child(3):before {
+    content: '3';
+}
+
+.role__item:nth-child(4):before {
+    content: '4';
+}
+
 
 .footer {
     box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 4px 0px inset;
@@ -57,8 +130,10 @@
     font-size: .9rem;
 }
 
-.footer__button {
-    width: 80%
+@media screen and (min-width: 480px) {
+    .apply-button, .job-header__button  {
+        width: 60%
+    }
 }
 
 @media screen and (min-width: 576px) {
@@ -86,7 +161,7 @@
         width: 40%;
     }
 
-    .footer__button {
+    .apply-button {
         width: 25%
     }
 }

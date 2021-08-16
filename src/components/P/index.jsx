@@ -2,7 +2,7 @@ import './styles.css'
 
 const P = ({ children, className }) => {
     return (
-        <p className={`${className} text-center text-white paragraph`}>{ children }</p>
+        <p className={`${className} text-start paragraph grey-d transition`}>{ children }</p>
     );
 };
 

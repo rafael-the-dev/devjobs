@@ -9,3 +9,7 @@
 .dark-mode .d-grey {
     color: var(--dark-grey);
 }
+
+.dark-mode .grey-d {
+    color: var(--grey);
+}
