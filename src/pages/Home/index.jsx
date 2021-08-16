@@ -40,7 +40,7 @@ const Home = () => {
                     <Form.Control 
                         type="text" 
                         placeholder="Filter by location" 
-                        className="modal__location transition bg-transparent border-0" 
+                        className="modal__location transition d-white bg-transparent border-0" 
                         ref={locationMobileRef}
                         key={Math.random() * 0.5}
                     />
@@ -116,7 +116,7 @@ const Home = () => {
 
     const formMemo = useMemo(() => (
         <Container as="section" fluid className="px w-100 search-section">
-            <Form className="d-flex rounded-3 align-items-center transition justify-content-between form">
+            <Form className="d-flex rounded-3 align-items-center transition dark-blue justify-content-between form">
                 <Form.Group className="form__group bg-no-repeat form__group--title">
                     <Form.Control
                         type="text" 
@@ -126,7 +126,7 @@ const Home = () => {
                         key={Math.random() * 30}
                     />
                 </Form.Group>
-                <Form.Group className="d-none d-sm-block form__group  bg-no-repeat form__group--location">
+                <Form.Group className="d-none d-md-block form__group  bg-no-repeat form__group--location">
                     <Form.Control 
                         type="text" 
                         placeholder="Filter by location" 
@@ -140,13 +140,13 @@ const Home = () => {
                         type="checkbox" 
                         id="isFullTimeCheck"
                         label="Full time only" 
-                        className="d-none d-sm-block form__checkbox" 
+                        className="d-none d-md-block form__checkbox" 
                         ref={isFullTimeRef}
                         key={Math.random() * 101}
                     />
                     <Button 
                         onClick={filterClickHandler}
-                        className="bg-center bg-no-repeat me-3 border-0 form__filter-button home-button bg-transparent d-sm-none">
+                        className="bg-center bg-no-repeat me-3 border-0 form__filter-button home-button bg-transparent d-md-none">
                     </Button>
                     <Button
                         type="button" 

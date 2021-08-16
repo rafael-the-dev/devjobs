@@ -3,9 +3,6 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-.dark-mode .job-card {
-    background-color: var(--very-dark-blue);
-}
 
 .job-card__logo {
     background-size: 27px;
@@ -26,7 +23,6 @@
 }
 
 .dark-mode .job-card__position {
-    color: var(--white);
     opacity: .9;
 }
 
