@@ -127,10 +127,25 @@
     color: var(--white);
 }
 
-.load-more {
+.load-more, .error__button {
     background-color: var(--violet);
     margin: 1.2rem auto 0 auto;
+}
+
+.load-more {
     width: 80%;
+}
+
+.error-section {
+    margin-top: 4rem;
+}
+
+.error__title {
+    font-size: 2.1rem;
+}
+
+.error__button {
+    width: 60%;
 }
 
 @media screen and (min-width: 576px) {
@@ -148,6 +163,18 @@
 
     .load-more {
         width: 40%;
+    }
+
+    .error-section {
+        margin-top: 7rem;
+    }
+
+    .error__title {
+        font-size: 2.4rem;
+    }
+
+    .error__button {
+        width: 30%;
     }
 }
 
@@ -190,6 +217,10 @@
     .load-more {
         width: 30%;
     }
+
+    .error-section {
+        margin-top: 10rem;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -199,5 +230,19 @@
 
     .load-more {
         width: 20%;
+    }
+
+    .error__title {
+        font-size: 2.8rem;
+    }
+
+    .error__button {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .error__button {
+        width: 15%;
     }
 }

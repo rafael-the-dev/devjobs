@@ -2,6 +2,7 @@ import { Container, Row, Col, Form, Button, Modal } from 'react-bootstrap';
 import Header from '../../components/Header';
 import './styles.css';
 import data from '../../data.json';
+import { H1 } from '../../components/Heading';
 import JobCard from '../../components/JobCard';
 import { Link } from 'react-router-dom';
 import { useState, useRef, useMemo } from 'react';
@@ -64,37 +65,26 @@ const Home = () => {
             </Modal.Body>
       </Modal>
     ), [ show ])
+    
+    const stringComparator = (data, key, value) => {
+        return data.filter(item => item[key].toLowerCase() === value.toLowerCase());
+    };
 
     const filteredJobs = () => {
         let jobs = data;
-        const titleLowerCased = title.toLowerCase();
-        const locationLowerCased = location.toLowerCase();
 
-        jobs = data.filter(item => {
-            let companyName = item.company.toLowerCase();
-            let position = item.position.toLowerCase();
-            let itemLocation = item.location.toLowerCase();
-            let contract = item.contract.toLowerCase();
+        if(title) {
+            const titleLowerCased = title.toLowerCase();
+            jobs = data.filter(item => (item['position'].toLowerCase() === titleLowerCased) || (item['company'].toLowerCase() === titleLowerCased));
+        }
 
-            if(titleLowerCased && locationLowerCased && isFullTime) {
-                if(((companyName === title) || (position === titleLowerCased)) && (itemLocation === locationLowerCased) && (contract === 'full time')) {
-                    return true;
-                }
+        if(location) {
+            jobs = stringComparator(jobs, 'location', location);
+        }
 
-                return false;
-            } else if(titleLowerCased || locationLowerCased || isFullTime) {
-                if(((companyName === titleLowerCased) || (position === titleLowerCased)) || (itemLocation === locationLowerCased) || (contract === 'full time')) {
-                    return true;
-                }
-
-                return false;
-            } else {
-                return true;
-            }
-            
-        });
-
-        //setJobsQuantity(q => jobs.length);
+        if(isFullTime) {
+            jobs = stringComparator(jobs, 'contract', 'full time');
+        }
         return jobs;
     };
 
@@ -112,6 +102,15 @@ const Home = () => {
         }
 
         setJobsQuantity(q => quantity);
+    };
+
+    const tryAgain = () => {
+        setTitle(t => '');
+        setLocation(l => '');
+        setIsFullTime(f => ''); 
+        titleRef.current.value = ''
+        locationRef.current.value = '';
+        isFullTimeRef.current.checked = false;
     };
 
     const formMemo = useMemo(() => (
@@ -164,19 +163,28 @@ const Home = () => {
             { headerMemo }
             <Container as="main" fluid className="position-relative">
                 { formMemo }
-                <Container as="section" fluid className="px pb-5 mt-4">
-                    <Row className="align-items-stretch">
-                        {
-                            filteredJobs().slice(0, jobsQuantity).map(item => (
-                                <Col xs={12} sm={6} lg={4} xxl={3} as={Link} to={`/jobs/${item.id}`} key={item.id}
-                                    className="mb-5 text-decoration-none">
-                                    <JobCard job={item} />
-                                </Col>
-                            ))
-                        }
-                    </Row>
-                    <Button className="home-button d-block load-more" onClick={loadClickHandler} >Load more</Button>
-                </Container>
+                {
+                    filteredJobs().length > 0 ? (
+                        <Container as="section" fluid className="px pb-5 mt-4">
+                            <Row className="align-items-stretch">
+                                {
+                                    filteredJobs().slice(0, jobsQuantity).map(item => (
+                                        <Col xs={12} sm={6} lg={4} xxl={3} as={Link} to={`/jobs/${item.id}`} key={item.id}
+                                            className="mb-5 text-decoration-none">
+                                            <JobCard job={item} />
+                                        </Col>
+                                    ))
+                                }
+                            </Row>
+                            <Button className="home-button d-block load-more" onClick={loadClickHandler} >Load more</Button>
+                        </Container>
+                    ) : (
+                        <Container as="section" fluid className="px error-section">
+                            <H1 className="text-uppercase error__title">Job not found</H1>
+                            <Button className="home-button d-block error__button" onClick={tryAgain} >Try again</Button>
+                        </Container>
+                    )
+                }
                 { modalMemo }
             </Container>
         </>
