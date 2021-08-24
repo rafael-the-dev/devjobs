@@ -26,6 +26,10 @@
     width: 50px;
 }
 
+.header__toggle-button:focus, .header__toggle-button:focus-within, .header__toggle-button:focus-visible {
+    outline: none !important;
+}
+
 .header__toggle-bullet {
     background-color: var(--violet);
     height: 18px;
